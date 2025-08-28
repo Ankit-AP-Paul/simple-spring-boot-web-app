@@ -1,5 +1,7 @@
 package org.example.simplewebapp.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.example.simplewebapp.model.Product;
 import org.example.simplewebapp.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,12 +10,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@Tag(name = "Products")
 public class ProductController {
 
     @Autowired
     ProductService productService;
 
     @GetMapping("/products")
+    @Operation(summary = "Get All Products")
     public List<Product> getProducts() {
         return productService.getProducts();
     }
